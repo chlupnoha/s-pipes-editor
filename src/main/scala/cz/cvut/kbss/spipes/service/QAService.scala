@@ -22,6 +22,8 @@ import scala.util.Try
 @Service
 class QAService extends PropertySource with Logger[QAService] with ResourceManager {
 
+  //TODO testy, aby se dalo orientovat!
+
   @Autowired
   private var helper: OntologyHelper = _
 

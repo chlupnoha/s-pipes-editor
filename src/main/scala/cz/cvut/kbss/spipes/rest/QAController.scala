@@ -9,8 +9,9 @@ import cz.cvut.kbss.spipes.service.QAService
 import cz.cvut.kbss.spipes.util.ConfigParam.DEFAULT_CONTEXT
 import cz.cvut.kbss.spipes.util.Implicits._
 import cz.cvut.kbss.spipes.util.{Logger, PropertySource}
+import org.apache.jena.atlas.json.JSON
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.{HttpStatus, ResponseEntity}
+import org.springframework.http.{HttpEntity, HttpStatus, ResponseEntity}
 import org.springframework.web.bind.annotation._
 
 import scala.compat.Platform.ConcurrentModificationException
@@ -20,8 +21,11 @@ import scala.util.{Failure, Success}
   * Created by Yan Doroshenko (yandoroshenko@protonmail.com) on 24.01.17.
   */
 @RestController
+//TODO change endpoint the same as script one which is quite confusing
 @RequestMapping(path = Array("/scripts"))
 class QAController extends PropertySource with Logger[QAController] {
+
+  //pouziva se na generovani formularu
 
   @Autowired
   private var service: QAService = _
@@ -76,8 +80,53 @@ class QAController extends PropertySource with Logger[QAController] {
     }
   }
 
+  //TODO prvni test
   @PostMapping(path = Array("/functions/forms"))
   def generateFunctionForm(@RequestBody dto: QuestionDTO): ResponseEntity[_] = {
+    //    unmapped record
+    //    class java.util.LinkedHashMap
+    //    {
+    //      @type=http://onto.fel.cvut.cz/ontologies/s-pipes/question-dto,
+    //      http://onto.fel.cvut.cz/ontologies/s-pipes/has-module-uri=http://vfn.cz/ontologies/fss-form-generation-0.123/generate-fss-form,
+    //      http://onto.fel.cvut.cz/ontologies/s-pipes/has-script-path=/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl
+    //    }
+
+//    {
+//      "@type":"http://onto.fel.cvut.cz/ontologies/s-pipes/question-dto",
+//      "http://onto.fel.cvut.cz/ontologies/s-pipes/has-module-uri":"http://vfn.cz/ontologies/fss-form-generation-0.123/generate-fss-form",
+//      "http://onto.fel.cvut.cz/ontologies/s-pipes/has-script-path":"/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl"
+//    }
+
+//    jsonResult: {
+//      "uri" : null,
+//      "id" : null,
+//      "scriptPath" : "/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl",
+//      "absolutePath" : null,
+//      "moduleUri" : "http://topbraid.org/sparqlmotion#Functions",
+//      "moduleTypeUri" : null,
+//      "rootQuestion" : null,
+//      "persistenceContext" : null
+//    }
+
+    /**
+     * The expected behaviour of the framework -
+     */
+
+    println("karel functions executions - zkouska")
+    println(s"module type uri: ${dto.getModuleTypeUri}")
+    println(dto)
+
+    import com.fasterxml.jackson.databind.ObjectMapper
+    val mapper = new ObjectMapper
+
+    try {
+      val jsonString = mapper.writerWithDefaultPrettyPrinter.writeValueAsString(dto)
+      println(s"jsonResult: $jsonString")
+    } catch {
+      case e: Exception =>
+        e.printStackTrace()
+    }
+
     val script = dto.getScriptPath()
     log.info(s"Generating form for script $script function ${dto.getModuleUri()}")
     service.generateFunctionForm(
@@ -96,4 +145,15 @@ class QAController extends PropertySource with Logger[QAController] {
         new ResponseEntity(e.getClass().getSimpleName() + ": " + e.getLocalizedMessage(), HttpStatus.INTERNAL_SERVER_ERROR)
     }
   }
+
+
+//  @PostMapping(path = Array("/functions/forms"))
+//  def generateFunctionForm(@RequestBody body: Any): ResponseEntity[_] = {
+//    println("JSEM TED NA FORMECH - zazadam si o form, dostanu form")
+//    println(body.getClass)
+//    println(body)
+//
+//    new ResponseEntity(HttpStatus.NOT_FOUND)
+//  }
+
 }

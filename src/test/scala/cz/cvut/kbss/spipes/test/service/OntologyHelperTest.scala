@@ -23,6 +23,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner
 @ContextConfiguration(classes = Array(classOf[TestServiceConfig]))
 class OntologyHelperTest {
 
+  //TODO Podivat se na testy!!!
+
   @Autowired
   private var scriptDao: ScriptDao = _
 
