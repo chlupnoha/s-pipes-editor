@@ -25,13 +25,8 @@ import scala.util.{Failure, Success}
 @RequestMapping(path = Array("/scripts"))
 class QAController extends PropertySource with Logger[QAController] {
 
-  //pouziva se na generovani formularu
-
   @Autowired
   private var service: QAService = _
-
-  @Autowired
-  private var om: ObjectMapper = _
 
   @PostMapping(path = Array("/forms"))
   def generateModuleForm(@RequestBody requestDTO: QuestionDTO): ResponseEntity[Any] = {
@@ -80,42 +75,9 @@ class QAController extends PropertySource with Logger[QAController] {
     }
   }
 
-  //TODO prvni test
-  @PostMapping(path = Array("/functions/forms"))
+    @PostMapping(path = Array("/functions/forms"))
   def generateFunctionForm(@RequestBody dto: QuestionDTO): ResponseEntity[_] = {
-    //    unmapped record
-    //    class java.util.LinkedHashMap
-    //    {
-    //      @type=http://onto.fel.cvut.cz/ontologies/s-pipes/question-dto,
-    //      http://onto.fel.cvut.cz/ontologies/s-pipes/has-module-uri=http://vfn.cz/ontologies/fss-form-generation-0.123/generate-fss-form,
-    //      http://onto.fel.cvut.cz/ontologies/s-pipes/has-script-path=/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl
-    //    }
-
-//    {
-//      "@type":"http://onto.fel.cvut.cz/ontologies/s-pipes/question-dto",
-//      "http://onto.fel.cvut.cz/ontologies/s-pipes/has-module-uri":"http://vfn.cz/ontologies/fss-form-generation-0.123/generate-fss-form",
-//      "http://onto.fel.cvut.cz/ontologies/s-pipes/has-script-path":"/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl"
-//    }
-
-//    jsonResult: {
-//      "uri" : null,
-//      "id" : null,
-//      "scriptPath" : "/home/chlupnoha/IdeaProjects/s-pipes-editor/src/test/resources/scripts/sample/simple-import/script.ttl",
-//      "absolutePath" : null,
-//      "moduleUri" : "http://topbraid.org/sparqlmotion#Functions",
-//      "moduleTypeUri" : null,
-//      "rootQuestion" : null,
-//      "persistenceContext" : null
-//    }
-
-    /**
-     * The expected behaviour of the framework -
-     */
-
-    println("karel functions executions - zkouska")
-    println(s"module type uri: ${dto.getModuleTypeUri}")
-    println(dto)
-
+    //testing debug from Petr Jordan
     import com.fasterxml.jackson.databind.ObjectMapper
     val mapper = new ObjectMapper
 

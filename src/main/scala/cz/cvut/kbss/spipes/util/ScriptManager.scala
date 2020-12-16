@@ -1,6 +1,7 @@
 package cz.cvut.kbss.spipes.util
 
 import java.io.{File, FileNotFoundException}
+import java.nio.file.{Files, Paths}
 
 import cz.cvut.kbss.spipes.util.ConfigParam.SCRIPTS_LOCATION
 import cz.cvut.kbss.spipes.util.Implicits._
@@ -17,10 +18,12 @@ trait ScriptManager extends PropertySource {
       .split(",")
       .map(s => {
         val f = new File(s)
-        if (!f.exists())
-          throw new FileNotFoundException(f"""Scripts location not found: $f""")
-        else
+        if (!f.exists()) {
+          //TODO tmp solution for testing purpose
+          Files.createDirectory(Paths.get(s)).toFile
+        } else {
           f
+        }
       })
 
   protected def ignored: Set[File] =

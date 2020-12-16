@@ -22,8 +22,10 @@ class ScriptController extends Logger[ScriptController] {
   @Autowired
   private var service: ScriptService = _
 
+  //DONE
   @PostMapping(path = Array("/functions"), produces = Array(JsonLd.MEDIA_TYPE))
   def getFunctions(@RequestBody dto: ScriptDTO): ResponseEntity[Any] = {
+    println("JSEM TADY")
     val script = dto.getAbsolutePath()
     log.info("Looking for functions of script " + script)
     service.getFunctions(script) match {
@@ -40,6 +42,7 @@ class ScriptController extends Logger[ScriptController] {
     }
   }
 
+  //DONE
   @PostMapping(path = Array("/moduleTypes"), produces = Array(JsonLd.MEDIA_TYPE))
   def getModuleTypes(@RequestBody dto: ScriptDTO): ResponseEntity[Any] = {
     val script = dto.getAbsolutePath()
@@ -58,6 +61,7 @@ class ScriptController extends Logger[ScriptController] {
     }
   }
 
+  //DONE
   @GetMapping
   def getScripts: ResponseEntity[_] = {
     log.info("Looking for any scripts")
