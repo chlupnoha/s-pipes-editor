@@ -1,0 +1,726 @@
+{
+  "@context": {
+    "label": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#label"
+    },
+    "key": {
+      "@id": "http://vfn.cz/ontologies/study-manager/key"
+    },
+    "onProperty": {
+      "@id": "http://www.w3.org/2002/07/owl#onProperty",
+      "@type": "@id"
+    },
+    "someValuesFrom": {
+      "@id": "http://www.w3.org/2002/07/owl#someValuesFrom",
+      "@type": "@id"
+    },
+    "prefLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#prefLabel"
+    },
+    "broader": {
+      "@id": "http://www.w3.org/2004/02/skos/core#broader",
+      "@type": "@id"
+    },
+    "range": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#range",
+      "@type": "@id"
+    },
+    "subClassOf": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#subClassOf",
+      "@type": "@id"
+    },
+    "inScheme": {
+      "@id": "http://www.w3.org/2004/02/skos/core#inScheme",
+      "@type": "@id"
+    },
+    "scopeNote": {
+      "@id": "http://www.w3.org/2004/02/skos/core#scopeNote"
+    },
+    "subPropertyOf": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#subPropertyOf",
+      "@type": "@id"
+    },
+    "domain": {
+      "@id": "http://www.w3.org/2000/01/rdf-schema#domain",
+      "@type": "@id"
+    },
+    "altLabel": {
+      "@id": "http://www.w3.org/2004/02/skos/core#altLabel"
+    },
+    "allValuesFrom": {
+      "@id": "http://www.w3.org/2002/07/owl#allValuesFrom",
+      "@type": "@id"
+    },
+    "has-layout-class": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form-layout/has-layout-class"
+    },
+    "description": {
+      "@id": "http://purl.org/dc/elements/1.1/description"
+    },
+    "has-question-origin": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-question-origin",
+      "@type": "@id"
+    },
+    "formType": {
+      "@id": "http://vfn.cz/ontologies/study-manager/formType"
+    },
+    "was-treated-at": {
+      "@id": "http://vfn.cz/ontologies/study-manager/was-treated-at",
+      "@type": "@id"
+    },
+    "has-author": {
+      "@id": "http://vfn.cz/ontologies/study-manager/has-author",
+      "@type": "@id"
+    },
+    "created": {
+      "@id": "http://purl.org/dc/terms/created",
+      "@type": "http://www.w3.org/2001/XMLSchema#dateTime"
+    },
+    "mbox": {
+      "@id": "http://xmlns.com/foaf/0.1/mbox"
+    },
+    "lastName": {
+      "@id": "http://xmlns.com/foaf/0.1/lastName"
+    },
+    "firstName": {
+      "@id": "http://xmlns.com/foaf/0.1/firstName"
+    },
+    "accountName": {
+      "@id": "http://xmlns.com/foaf/0.1/accountName"
+    },
+    "password": {
+      "@id": "http://vfn.cz/ontologies/study-manager/password"
+    },
+    "isInvited": {
+      "@id": "http://vfn.cz/ontologies/study-manager/isInvited",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "is-member-of": {
+      "@id": "http://vfn.cz/ontologies/study-manager/is-member-of",
+      "@type": "@id"
+    },
+    "has_related_question": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/documentation/has_related_question",
+      "@type": "@id"
+    },
+    "title": {
+      "@id": "http://purl.org/dc/terms/title"
+    },
+    "hasTopConcept": {
+      "@id": "http://www.w3.org/2004/02/skos/core#hasTopConcept",
+      "@type": "@id"
+    },
+    "status": {
+      "@id": "http://purl.org/ontology/bibo/status"
+    },
+    "versionIRI": {
+      "@id": "http://www.w3.org/2002/07/owl#versionIRI",
+      "@type": "@id"
+    },
+    "preferredNamespacePrefix": {
+      "@id": "http://purl.org/vocab/vann/preferredNamespacePrefix"
+    },
+    "preferredNamespaceUri": {
+      "@id": "http://purl.org/vocab/vann/preferredNamespaceUri"
+    },
+    "minInclusive": {
+      "@id": "http://www.w3.org/2001/XMLSchema#minInclusive",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "maxInclusive": {
+      "@id": "http://www.w3.org/2001/XMLSchema#maxInclusive",
+      "@type": "http://www.w3.org/2001/XMLSchema#integer"
+    },
+    "has-datatype": {
+      "@id": "http://onto.fel.cvut.cz/ontologies/form/has-datatype",
+      "@type": "@id"
+    },
+    "imports": {
+      "@id": "http://www.w3.org/2002/07/owl#imports",
+      "@type": "@id"
+    },
+    "inverseOf": {
+      "@id": "http://www.w3.org/2002/07/owl#inverseOf",
+      "@type": "@id"
+    },
+    "@vocab": "http://onto.fel.cvut.cz/ontologies/kodi/sgov2sforms/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "fl": "http://onto.fel.cvut.cz/ontologies/form-lib/",
+    "fm": "http://onto.fel.cvut.cz/ontologies/form-metadata/",
+    "dce": "http://purl.org/dc/elements/1.1/",
+    "tops": "http://www.topbraid.org/tops#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "fn": "http://www.w3.org/2005/xpath-functions#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "smf": "http://topbraid.org/sparqlmotionfunctions#",
+    "spif": "http://spinrdf.org/spif#",
+    "sml": "http://topbraid.org/sparqlmotionlib#",
+    "arg": "http://spinrdf.org/arg#",
+    "form-ecc-lib": "http://onto.fel.cvut.cz/ontologies/aviation/eccairs-form-lib/",
+    "z-sgov-pojem": "https://slovník.gov.cz/základní/pojem/",
+    "sm": "http://topbraid.org/sparqlmotion#",
+    "termit-pojem": "http://onto.fel.cvut.cz/ontologies/application/termit/pojem/",
+    "km-rdf4j": "http://onto.fel.cvut.cz/ontologies/lib/module/rdf4j/",
+    "sp": "http://spinrdf.org/sp#",
+    "v-sgov-pojem": "https://slovník.gov.cz/veřejný-sektor/pojem/",
+    "kbss-module": "http://onto.fel.cvut.cz/ontologies/lib/module/",
+    "termit": "http://onto.fel.cvut.cz/ontologies/application/termit/",
+    "turtle": "http://www.semanticweb.org/owl/owlapi/turtle#",
+    "km-param": "http://onto.fel.cvut.cz/ontologies/lib/module-param/",
+    "afn": "http://jena.hpl.hp.com/ARQ/function#",
+    "a-popis-dat": "http://onto.fel.cvut.cz/ontologies/slovník/agendový/popis-dat/",
+    "spl": "http://spinrdf.org/spl#",
+    "form-lt": "http://onto.fel.cvut.cz/ontologies/form-layout/",
+    "z-sgov": "https://slovník.gov.cz/základní/",
+    "jfn": "java:org.apache.jena.sparql.function.library.",
+    "form": "http://onto.fel.cvut.cz/ontologies/form/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "pf": "http://jena.hpl.hp.com/ARQ/property#",
+    "km-sesame": "http://onto.fel.cvut.cz/ontologies/lib/module/sesame/",
+    "spin": "http://spinrdf.org/spin#",
+    "kbss-spif": "http://onto.fel.cvut.cz/ontologies/lib/spin-function/",
+    "a-popis-dat-pojem": "http://onto.fel.cvut.cz/ontologies/slovník/agendový/popis-dat/pojem/",
+    "doc": "http://onto.fel.cvut.cz/ontologies/documentation/",
+    "dc": "http://purl.org/dc/terms/"
+  },
+  "@graph": [
+    {
+      "@id": "adresa-4409",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "form:has-preceding-question": {
+        "@id": "geometrie-5821"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Adresa"
+      }
+    },
+    {
+      "@id": "asov-doba-9479",
+      "@type": "doc:question",
+      "has_related_question": [
+        "od-7516",
+        "do-5703"
+      ],
+      "has-layout-class": "section",
+      "form:has-preceding-question": {
+        "@id": "popis-3666"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Časová doba"
+      }
+    },
+    {
+      "@id": "cena-3413",
+      "@type": "doc:question",
+      "has_related_question": [
+        "stka-5139",
+        "m-na-8493"
+      ],
+      "has-layout-class": "section",
+      "form:has-preceding-question": {
+        "@id": "podm-nka-4459"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Cena"
+      }
+    },
+    {
+      "@id": "cena-3423",
+      "@type": "doc:question",
+      "has_related_question": [
+        "stka-5500",
+        "m-na-3794"
+      ],
+      "has-layout-class": [
+        "section",
+        "hidden"
+      ],
+      "form:has-preceding-question": {
+        "@id": "podm-nka-8506"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Cena"
+      }
+    },
+    {
+      "@id": "den-v-t-dnu-9792",
+      "@type": "doc:question",
+      "has_related_question": [
+        "pondel-9618",
+        "uter-6671",
+        "st-eda-6773",
+        "tvrtek-5632",
+        "p-tek-6055"
+      ],
+      "has-layout-class": "section",
+      "form:has-preceding-question": {
+        "@id": "asov-doba-9479"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Den v týdnu"
+      }
+    },
+    {
+      "@id": "do-5703",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "time",
+      "form:has-preceding-question": {
+        "@id": "od-7516"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Do"
+      }
+    },
+    {
+      "@id": "geometrie-5821",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "label": {
+        "@language": "cs",
+        "@value": "Geometrie"
+      }
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kapacita-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "has-layout-class": "number",
+      "has-datatype": "xsd:int",
+      "form:has-preceding-question": {
+        "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-typ-turistického-cíle-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q"
+      },
+      "has-question-origin": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kapacita",
+      "description": {
+        "@language": "cs",
+        "@value": "Kapacita turistického cíle ve smyslu kolik návštěvníků najednou se do objektu turistického cíle vejde."
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Kapacita"
+      },
+      "xsd:maxInclusive": 100,
+      "xsd:minInclusive": 0
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kouření-povoleno-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kapacita-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q"
+      },
+      "has-question-origin": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kouření-povoleno",
+      "description": {
+        "@language": "cs",
+        "@value": "Určuje, zda je možné kouření tabákových výrobků."
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Kouření povoleno"
+      }
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-dostupný-jazyk-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "form:has-preceding-question": {
+        "@id": "otv-rac-doba-1996"
+      },
+      "has-question-origin": "https://slovník.gov.cz/generický/číselníky/pojem/jazyk",
+      "label": {
+        "@language": "cs",
+        "@value": "Dostupný jazyk"
+      }
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-typ-turistického-cíle-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "form:has-preceding-question": {
+        "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-dostupný-jazyk-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q"
+      },
+      "has-question-origin": "https://slovník.gov.cz/generický/číselníky/pojem/typ-turistického-cíle",
+      "label": {
+        "@language": "cs",
+        "@value": "Typ turistického cíle"
+      }
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "has_related_question": [
+        "n-zev-7032",
+        "um-st-n-3784",
+        "vstupn-718",
+        "vstupn-2057",
+        "otv-rac-doba-1996",
+        "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-dostupný-jazyk-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+        "https://slovník.gov.cz/generický/turistické-cíle/pojem/má-typ-turistického-cíle-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+        "https://slovník.gov.cz/generický/turistické-cíle/pojem/kapacita-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+        "https://slovník.gov.cz/generický/turistické-cíle/pojem/kouření-povoleno-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+        "https://slovník.gov.cz/generický/turistické-cíle/pojem/veřejná-přístupnost-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q"
+      ],
+      "has-layout-class": [
+        "wizard-step",
+        "section",
+        "collapsed"
+      ],
+      "has-question-origin": "https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl",
+      "description": {
+        "@language": "cs",
+        "@value": "Samostatný turistický cíl"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Turistický cíl"
+      }
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-form-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "has_related_question": "https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "has-layout-class": "form",
+      "form:has-question-origin": "https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-form",
+      "label": "Turistický cíl-form"
+    },
+    {
+      "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/veřejná-přístupnost-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q",
+      "@type": "doc:question",
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "https://slovník.gov.cz/generický/turistické-cíle/pojem/kouření-povoleno-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q"
+      },
+      "has-question-origin": "https://slovník.gov.cz/generický/turistické-cíle/pojem/veřejná-přístupnost",
+      "description": {
+        "@language": "cs",
+        "@value": "Určuje, zda je daný objekt veřejně přístupný."
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Veřejná přístupnost"
+      }
+    },
+    {
+      "@id": "m-na-3794",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "type-ahead",
+      "form:has-possible-value": [
+        {
+          "@id": "option-9026790"
+        },
+        {
+          "@id": "option-4601646"
+        }
+      ],
+      "form:has-preceding-question": {
+        "@id": "stka-5500"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Měna"
+      }
+    },
+    {
+      "@id": "m-na-8493",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "type-ahead",
+      "form:has-possible-value": [
+        {
+          "@id": "option-2047654"
+        },
+        {
+          "@id": "option-694831"
+        }
+      ],
+      "form:has-preceding-question": {
+        "@id": "stka-5139"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Měna"
+      }
+    },
+    {
+      "@id": "n-zev-2751",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "label": {
+        "@language": "cs",
+        "@value": "Název"
+      }
+    },
+    {
+      "@id": "n-zev-3485",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "label": {
+        "@language": "cs",
+        "@value": "Název"
+      }
+    },
+    {
+      "@id": "n-zev-7032",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "label": {
+        "@language": "cs",
+        "@value": "Název"
+      }
+    },
+    {
+      "@id": "n-zev-9424",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [
+        "text",
+        "hidden"
+      ],
+      "label": {
+        "@language": "cs",
+        "@value": "Název"
+      }
+    },
+    {
+      "@id": "od-7516",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "time",
+      "label": {
+        "@language": "cs",
+        "@value": "Od"
+      }
+    },
+    {
+      "@id": "option-2047654",
+      "label": {
+        "@language": "cs",
+        "@value": "CZK"
+      }
+    },
+    {
+      "@id": "option-4601646",
+      "label": {
+        "@language": "cs",
+        "@value": "EUR"
+      }
+    },
+    {
+      "@id": "option-694831",
+      "label": {
+        "@language": "cs",
+        "@value": "EUR"
+      }
+    },
+    {
+      "@id": "option-9026790",
+      "label": {
+        "@language": "cs",
+        "@value": "CZK"
+      }
+    },
+    {
+      "@id": "otv-rac-doba-1996",
+      "@type": "doc:question",
+      "has_related_question": [
+        "n-zev-3485",
+        "popis-3666",
+        "asov-doba-9479",
+        "den-v-t-dnu-9792"
+      ],
+      "has-layout-class": "section",
+      "form:has-preceding-question": {
+        "@id": "vstupn-2057"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Otvírací doba"
+      }
+    },
+    {
+      "@id": "p-tek-6055",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "tvrtek-5632"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Pátek"
+      }
+    },
+    {
+      "@id": "podm-nka-4459",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "form:has-preceding-question": {
+        "@id": "n-zev-2751"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Podmínka"
+      }
+    },
+    {
+      "@id": "podm-nka-8506",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [
+        "text",
+        "hidden"
+      ],
+      "form:has-preceding-question": {
+        "@id": "n-zev-9424"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Podmínka"
+      }
+    },
+    {
+      "@id": "pondel-9618",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "label": {
+        "@language": "cs",
+        "@value": "Pondelí"
+      }
+    },
+    {
+      "@id": "popis-3666",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "form:has-preceding-question": {
+        "@id": "n-zev-3485"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Popis"
+      }
+    },
+    {
+      "@id": "st-eda-6773",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "uter-6671"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Středa"
+      }
+    },
+    {
+      "@id": "stka-5139",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": [],
+      "label": {
+        "@language": "cs",
+        "@value": "Částka"
+      }
+    },
+    {
+      "@id": "stka-5500",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "text",
+      "label": {
+        "@language": "cs",
+        "@value": "Částka"
+      }
+    },
+    {
+      "@id": "tvrtek-5632",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "st-eda-6773"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Čtvrtek"
+      }
+    },
+    {
+      "@id": "um-st-n-3784",
+      "@type": "doc:question",
+      "has_related_question": [
+        "geometrie-5821",
+        "adresa-4409"
+      ],
+      "has-layout-class": "section",
+      "form:has-preceding-question": {
+        "@id": "n-zev-7032"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Umístění"
+      }
+    },
+    {
+      "@id": "uter-6671",
+      "@type": "doc:question",
+      "has_related_question": [],
+      "has-layout-class": "checkbox",
+      "form:has-preceding-question": {
+        "@id": "pondel-9618"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Uterý"
+      }
+    },
+    {
+      "@id": "vstupn-2057",
+      "@type": "doc:question",
+      "has_related_question": [
+        "n-zev-9424",
+        "podm-nka-8506",
+        "cena-3423"
+      ],
+      "has-layout-class": [ "checkbox", "section", "answerable" ],
+      "form:has-preceding-question": {
+        "@id": "vstupn-718"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Vstupné"
+      }
+    },
+    {
+      "@id": "vstupn-718",
+      "@type": "doc:question",
+      "has_related_question": [
+        "n-zev-2751",
+        "podm-nka-4459",
+        "cena-3413"
+      ],
+      "has-layout-class": [ "checkbox", "section", "answerable" ],
+      "form:has-preceding-question": {
+        "@id": "um-st-n-3784"
+      },
+      "label": {
+        "@language": "cs",
+        "@value": "Vstupné"
+      }
+    }
+  ]
+}

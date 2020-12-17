@@ -1,0 +1,124 @@
+@prefix :      <http://onto.fel.cvut.cz/ontologies/shapes/form/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix fl:    <http://onto.fel.cvut.cz/ontologies/form-lib/> .
+@prefix fm:    <http://onto.fel.cvut.cz/ontologies/form-metadata/> .
+@prefix dce:   <http://purl.org/dc/elements/1.1/> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix tops:  <http://www.topbraid.org/tops#> .
+@prefix fn:    <http://www.w3.org/2005/xpath-functions#> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix smf:   <http://topbraid.org/sparqlmotionfunctions#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix sml:   <http://topbraid.org/sparqlmotionlib#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix arg:   <http://spinrdf.org/arg#> .
+@prefix form-ecc-lib: <http://onto.fel.cvut.cz/ontologies/aviation/eccairs-form-lib/> .
+@prefix z-sgov-pojem: <https://slovník.gov.cz/základní/pojem/> .
+@prefix sm:    <http://topbraid.org/sparqlmotion#> .
+@prefix termit-pojem: <http://onto.fel.cvut.cz/ontologies/application/termit/pojem/> .
+@prefix km-rdf4j: <http://onto.fel.cvut.cz/ontologies/lib/module/rdf4j/> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix v-sgov-pojem: <https://slovník.gov.cz/veřejný-sektor/pojem/> .
+@prefix kbss-module: <http://onto.fel.cvut.cz/ontologies/lib/module/> .
+@prefix termit: <http://onto.fel.cvut.cz/ontologies/application/termit/> .
+@prefix turtle: <http://www.semanticweb.org/owl/owlapi/turtle#> .
+@prefix km-param: <http://onto.fel.cvut.cz/ontologies/lib/module-param/> .
+@prefix afn:   <http://jena.hpl.hp.com/ARQ/function#> .
+@prefix a-popis-dat: <http://onto.fel.cvut.cz/ontologies/slovník/agendový/popis-dat/> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix form-lt: <http://onto.fel.cvut.cz/ontologies/form-layout/> .
+@prefix z-sgov: <https://slovník.gov.cz/základní/> .
+@prefix form:  <http://onto.fel.cvut.cz/ontologies/form/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pf:    <http://jena.hpl.hp.com/ARQ/property#> .
+@prefix km-sesame: <http://onto.fel.cvut.cz/ontologies/lib/module/sesame/> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix kbss-spif: <http://onto.fel.cvut.cz/ontologies/lib/spin-function/> .
+@prefix a-popis-dat-pojem: <http://onto.fel.cvut.cz/ontologies/slovník/agendový/popis-dat/pojem/> .
+@prefix doc:   <http://onto.fel.cvut.cz/ontologies/documentation/> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix dc:    <http://purl.org/dc/terms/> .
+
+[ a            sh:ValidationReport ;
+  sh:conforms  false ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-form-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Turistický cíl-form"
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/turistický-cíl-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Turistický cíl"@cs
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/má-dostupný-jazyk-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Dostupný jazyk"@cs
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/má-typ-turistického-cíle-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "minCount[1]: Invalid cardinality: expected min 1: Got count = 0" ;
+                 sh:resultPath                 form-lt:has-layout-class ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent ;
+                 sh:sourceShape                _:b1
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/má-dostupný-jazyk-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "minCount[1]: Invalid cardinality: expected min 1: Got count = 0" ;
+                 sh:resultPath                 form-lt:has-layout-class ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent ;
+                 sh:sourceShape                _:b1
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/má-typ-turistického-cíle-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Typ turistického cíle"@cs
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/kapacita-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Kapacita"@cs
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/kouření-povoleno-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Kouření povoleno"@cs
+               ] ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  <https://slovník.gov.cz/generický/turistické-cíle/pojem/veřejná-přístupnost-a860aed5-6fe7-4098-b7d2-2e2dc7b4906c-q> ;
+                 sh:resultMessage              "LanguageIn[en]: No matching language tag cs" ;
+                 sh:resultPath                 rdfs:label ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:LanguageInConstraintComponent ;
+                 sh:sourceShape                _:b0 ;
+                 sh:value                      "Veřejná přístupnost"@cs
+               ]
+] .
