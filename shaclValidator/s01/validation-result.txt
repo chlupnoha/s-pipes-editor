@@ -1,8 +1,28 @@
-@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix :      <http://onto.fel.cvut.cz/ontologies/shapes/form/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix spl:   <http://spinrdf.org/spl#> .
+@prefix spif:  <http://spinrdf.org/spif#> .
+@prefix sml:   <http://topbraid.org/sparqlmotionlib#> .
+@prefix sh:    <http://www.w3.org/ns/shacl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix km-sesame: <http://onto.fel.cvut.cz/ontologies/lib/module/sesame/> .
+@prefix spin:  <http://spinrdf.org/spin#> .
+@prefix doc:   <http://onto.fel.cvut.cz/ontologies/documentation/> .
+@prefix sm:    <http://topbraid.org/sparqlmotion#> .
+@prefix dash:  <http://datashapes.org/dash#> .
+@prefix sp:    <http://spinrdf.org/sp#> .
+@prefix kbss-module: <http://onto.fel.cvut.cz/ontologies/lib/module/> .
 
 [ a            sh:ValidationReport ;
-  sh:conforms  true
+  sh:conforms  false ;
+  sh:result    [ a                             sh:ValidationResult ;
+                 sh:focusNode                  []  ;
+                 sh:resultMessage              "minCount[1]: Invalid cardinality: expected min 1: Got count = 0" ;
+                 sh:resultPath                 sp:text ;
+                 sh:resultSeverity             sh:Violation ;
+                 sh:sourceConstraintComponent  sh:MinCountConstraintComponent ;
+                 sh:sourceShape                [] 
+               ]
 ] .
