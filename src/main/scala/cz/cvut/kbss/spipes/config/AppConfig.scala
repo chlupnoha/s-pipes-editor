@@ -18,6 +18,8 @@ import org.springframework.web.servlet.config.annotation.{DefaultServletHandlerC
 @Import(Array(classOf[RestConfig], classOf[PersistenceConfig], classOf[WebsocketConfig])) //, classOf[SecurityConfig]))
 class AppConfig extends WebMvcConfigurerAdapter {
 
+  //todo neco podobneho v testech - aby se dotaz prelozil spravne na DTO
+
   @Autowired
   private var objectMapper: ObjectMapper = _
 

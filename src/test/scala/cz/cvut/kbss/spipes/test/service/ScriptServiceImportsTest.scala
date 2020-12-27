@@ -3,6 +3,8 @@ package cz.cvut.kbss.spipes.test.service
 /**
   * Created by Yan Doroshenko (yandoroshenko@protonmail.com) on 20.03.2018.
   */
+
+//TODO kouknout se, co je toto presne za testy
 //@RunWith(classOf[SpringJUnit4ClassRunner])
 class ScriptServiceImportsTest extends ScriptServiceTest {
 
