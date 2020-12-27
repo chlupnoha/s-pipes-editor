@@ -15,7 +15,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +31,7 @@ public class Validator {
     /**
      * Validator constructor.
      */
-    public Validator() throws FileNotFoundException {
+    public Validator() {
         // inference rules
 //        shapesModel = ModelFactory.createDefaultModel();
 //        shapesModel.read(
@@ -40,7 +42,7 @@ public class Validator {
         // mapping Z-SGoV to UFO
         mappingModel = ModelFactory.createDefaultModel();
         mappingModel.read(
-                new FileInputStream(new File("/home/chlupnoha/IdeaProjects/s-pipes-editor/src/main/resources/model.ttl")),
+                getClass().getClassLoader().getResourceAsStream("model.ttl"),
             null,
             FileUtils.langTurtle);
     }
