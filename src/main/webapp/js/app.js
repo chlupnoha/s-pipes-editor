@@ -18,6 +18,7 @@ import DashboardController from './components/dashboard/DashboardController';
 import RoutingRules from './utils/RoutingRules';
 import ViewController from './components/view/ViewController';
 import Scripts from "./components/scripts/Scripts";
+import Validation from "./components/validation/Validation";
 
 let intlData = null;
 
@@ -49,6 +50,7 @@ const App = React.createClass({
                     <Route path={Routes.views.path} onEnter={onRouteEnter} component={ViewController}/>
                     <Route path={Routes.scripts.path} onEnter={onRouteEnter} component={Scripts}/>
                     <Route path={Routes.functions.path} onEnter={onRouteEnter} component={Functions}/>
+                    <Route path={Routes.validation.path} onEnter={onRouteEnter} component={Validation}/>
                 </Route>
             </Router>
         </IntlProvider>;
