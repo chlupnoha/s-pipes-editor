@@ -18,9 +18,8 @@
 
 :module-requires-rdfs_label:
   a sh:NodeShape ;
-  sh:targetClass sm:Modules ; #- tohle z nejakeho duvodu v konzoli nefunuje :/
-#  sh:targetClass sml:ApplyConstruct, sml:BindBySelect, sml:BindWithConstant, sml:ExportToRDFFile, sml:Merge, sml:PerformUpdate, sml:ReturnRDF ;
-  rdfs:comment "Kazdy modul musi mit rdfs:label."@cz ;
+  sh:targetClass <http://example.com#File> ;
+  rdfs:comment "Kazdy file musi mit prave jeden rdfs:label."@cz ;
   sh:property [
       sh:path rdfs:label ;
       sh:minCount 1 ;

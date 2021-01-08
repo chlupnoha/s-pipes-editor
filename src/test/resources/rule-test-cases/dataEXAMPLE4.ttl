@@ -1,0 +1,8 @@
+<http://onto.fel.cvut.cz/ontologies/s-pipes/hello-world-example-0.1/bind-zkouska>
+    a       <http://example.com#File> ;
+    <http://www.w3.org/2000/01/rdf-schema#label>
+            "Bind person name2" ;
+    <http://topbraid.org/sparqlmotion#outputVariable>
+            "personName2" ;
+    <http://topbraid.org/sparqlmotionlib#value>
+            []  .

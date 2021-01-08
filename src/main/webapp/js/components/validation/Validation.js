@@ -1,87 +1,137 @@
 import * as React from 'react';
-import Actions from '../../actions/Actions';
-import FunctionStore from '../../stores/FunctionStore';
-import Mask from "../Mask";
 import Messager from "../wrapper/Messager";
 import I18nWrapper from "../../i18n/I18nWrapper";
 import injectIntl from "../../utils/injectIntl";
-import {Accordion, Button, Modal, Panel} from 'react-bootstrap';
-import Record from "../record/Record";
-import * as EntityFactory from "../../utils/EntityFactory";
+import Ajax from "../../utils/Ajax";
 
-// const SCRIPT_PATH = "http://onto.fel.cvut.cz/ontologies/s-pipes/has-script-path";
-// const FUNCTION_DTO = "http://onto.fel.cvut.cz/ontologies/s-pipes/has-function-dto";
-// const FUNCTION_URI = "http://onto.fel.cvut.cz/ontologies/s-pipes/has-function-uri";
-// const FUNCTION_NAME = "http://onto.fel.cvut.cz/ontologies/s-pipes/has-function-local-name";
+import {Button, Modal} from "react-bootstrap";
+import * as I18Store from "../../stores/I18nStore";
+import Actions from "../../actions/Actions";
 
-let record;
-
+//TODO quite beefy component
 class Validation extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
-            formVisible: false,
-            functions: null,
-            functionUri: null,
-            loading: true,
-            record: EntityFactory.initNewRecord()
+            validationData: false,
+            validationDataSelected: false,
+            validationDataDetail: false,
+            validationRules: false,
+            validationRuleSelected: false,
+            validationRuleDetail: false,
+            modalVisible: false,
+            modalMessage: ""
         };
-    }
 
-    componentWillMount() {
-        Actions.listAllFunctions();
-    }
-
-    render() {
-        if (this.state.loading)
-            return <Mask/>;
-        if (this.state.functions == null)
-            return <p>No functions</p>;
-        let handlers = {
-            onCancel: this._onCancel,
-            onChange: this._onChange,
-            onSave: this._mergeForm
-        };
-        record = <Record
-            ref={(c) => this.recordComponent = c}
-            handlers={handlers}
-            record={this.state.record}
-            script={this.state.script}
-            functionUri={this.state.functionUri}
-            loading={this.state.loading}/>;
-        return <div>
-            <Accordion>
-                {this.state.functions.map(f =>
-                    <Panel header={f[SCRIPT_PATH]} key={f[SCRIPT_PATH]} eventKey={f[SCRIPT_PATH]}>
-                        {f[FUNCTION_DTO]["@list"].map(fn =>
-                            <Button key={fn[FUNCTION_URI]} onClick={() => this.setState({
-                                functionUri: fn[FUNCTION_URI],
-                                script: f[SCRIPT_PATH],
-                                formVisible: true
-                            })}>
-                                {fn[FUNCTION_NAME]}
-                            </Button>)}
-                    </Panel>
-                )}
-            </Accordion>
-            <Modal dialogClassName="form-modal" show={this.state.formVisible}>
-                <Modal.Body>
-                    {record}
-                </Modal.Body>
-            </Modal>
-        </div>;
+        this.handleChangeData = this.handleChangeData.bind(this);
+        this.handleChangeRule = this.handleChangeRule.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
-        this.unsubscribeView = FunctionStore.listen(f => this._functionsLoaded(f.functions));
+        Ajax.get('rest/validation/data').end(
+            (data) => {
+                console.log(data);
+                this.setState({validationData : data});
+            });
+        Ajax.get('rest/validation/rules').end(
+            (data) => {
+                console.log(data);
+                this.setState({validationRules : data});
+            });
     }
 
-    _functionsLoaded(functions) {
-        if (functions == null) {
-            this.setState({loading: false});
-            return;
+    componentWillMount() {
+        this.render();
+    }
+
+    handleChangeData(event) {
+        if(event.target.value !== ""){
+            Ajax.get('rest/validation/data/' + event.target.value).end(
+                (d) => {
+                    this.setState({validationDataDetail : d});
+                });
         }
-        this.setState({loading: false, functions: functions});
+        this.setState({validationDataSelected : event.target.value});
+    }
+
+    handleChangeRule(event) {
+        if(event.target.value !== ""){
+            Ajax.get('rest/validation/rules/' + event.target.value).end(
+                (d) => {
+                    this.setState({validationRuleDetail : d});
+                });
+        }
+        this.setState({validationRuleSelected : event.target.value});
+    }
+
+    handleSubmit(event) {
+        if(!this.state.validationDataSelected|| !this.state.validationRuleSelected){
+            this.setState({modalVisible: true, modalMessage: "Data and rule are required"});
+        }else{
+            var data = {data: this.state.validationDataSelected, rule: this.state.validationRuleSelected}
+            Ajax.post('rest/validation/execute', data, "json").end(
+                (d) => {
+                    console.log("result is" + d);
+                    this.setState({modalVisible: true, modalMessage: d})
+                }
+            )
+            event.preventDefault();
+        }
+
+    }
+
+    closeModal() {
+        this.setState({modalVisible: false});
+    };
+
+    render() {
+        if(!this.state.validationData || !this.state.validationRules){
+            return <div>LOADING</div>
+        }else{
+            return (
+                <div className="container">
+                    <form onSubmit={this.handleSubmit}>
+                        <h2>Validation form</h2>
+                        <label>
+                            Pick your data:
+                            <select value={this.state.validationDataSelected} onChange={this.handleChangeData}>
+                                <option key="" value="">{}</option>
+                                {this.state.validationData.data.map((e) => {
+                                    return <option key={e} value={e}>{e}</option>;
+                                })}
+                            </select>
+                        </label>
+                        <label>
+                            Pick your rule:
+                            <select value={this.state.validationRuleSelected} onChange={this.handleChangeRule}>
+                                <option key="" value="">{}</option>
+                                {this.state.validationRules.data.map((e) => {
+                                    return <option key={e} value={e}>{e}</option>;
+                                })}
+                            </select>
+                        </label>
+                        <input type="submit" value="Submit" />
+                        <div className="row" style={{whiteSpace: "pre-line"}}>
+                            <h3>Add JS visualization</h3>
+                            <div className="col-sm-6" >data detail: <br/>{this.state.validationDataDetail}</div>
+                            <div className="col-sm-6" >rule detail: <br/>{this.state.validationRuleDetail}</div>
+                        </div>
+                    </form>
+                    <Modal show={this.state.modalVisible}>
+                        <Modal.Header>
+                            <Modal.Title>Result</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body style={{whiteSpace: "pre-line"}}>
+                            {this.state.modalMessage}
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={() => this.closeModal()}>OK</Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+            );
+        }
     }
 
 }
