@@ -51,6 +51,7 @@ class QAService extends PropertySource with Logger[QAService] with ResourceManag
       res.asScala.foreach(p => {
         helper.getFile(p._1).map(f =>
           cleanly(new FileOutputStream(f))(_.close())(os => {
+            val pp = p._2
             log.info(s"Writing model to file $f")
             p._2.write(os, FileUtils.langTurtle)
             NotificationController.notify(scriptPath)

@@ -1,6 +1,3 @@
-# baseURI: http://onto.fel.cvut.cz/ontologies/s-pipes/hello-world-example-0.1
-# imports: http://onto.fel.cvut.cz/ontologies/s-pipes-lib
-
 @prefix : <http://onto.fel.cvut.cz/ontologies/s-pipes/hello-world-example-0.1/> .
 @prefix doc: <http://onto.fel.cvut.cz/ontologies/documentation/> .
 @prefix kbss-module: <http://onto.fel.cvut.cz/ontologies/lib/module/> .
@@ -23,40 +20,10 @@
 
 :bind-firstname
   rdf:type sml:BindWithConstant ;
-  sm:next :construct-greeding ;
+  sm:next :construct-greeding ;dz
   sm:outputVariable "personName" ;
   sml:value [
       sp:varName "firstName"^^xsd:string ;
     ] ;
-  rdfs:label "Bind person name1" ;
-.
-
-:construct-greeding
-  rdf:type sml:ApplyConstruct ;
-  sm:next :express-greeding_Return ;
-  sml:constructQuery [
-      rdf:type sp:Construct ;
-      sp:text """PREFIX : <http://vfn.cz/ontologies/s-pipes/hello-world-example-0.1/>
-CONSTRUCT {
-    ?person :is-greeted-by-message ?greetingMessage .
-}
-WHERE {
-    BIND(concat(str(:), ?personName) as ?person)
-    BIND(concat("Hello ", ?personName, ".") as ?greetingMessage)
-}"""^^xsd:string ;
-    ] ;
-  sml:replace "true"^^xsd:boolean ;
-  rdfs:label "Construct greeting"^^xsd:string ;
-.
-
-:express-greeding_Return
-  rdf:type sml:ReturnRDF ;
-  sml:serialization sml:JSONLD ;
-  rdfs:label "Return greeding statement" ;
-.
-
-:execute-greeding
-  rdf:type sm:Function ;
-  sm:returnModule :express-greeding_Return ;
-  rdfs:subClassOf sm:Functions ;
+  rdfs:label "Bind person name" ;
 .

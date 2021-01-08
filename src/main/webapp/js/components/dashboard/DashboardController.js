@@ -18,15 +18,19 @@ let DashboardController = React.createClass({
         Routing.transitionTo(Routes.scripts);
     },
 
-
     _showFunctions: function () {
         Routing.transitionTo(Routes.functions);
+    },
+
+    _showValidation: function () {
+        Routing.transitionTo(Routes.validation);
     },
 
     render: function () {
         let handlers = {
             showScripts: this._showScripts,
-            showFunctions: this._showFunctions
+            showFunctions: this._showFunctions,
+            showValidation: this._showValidation
         };
         return <div>
             <Dashboard dashboard={this._resolveDashboard()} handlers={handlers}/>

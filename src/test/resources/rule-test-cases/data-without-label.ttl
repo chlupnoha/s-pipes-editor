@@ -1,6 +1,3 @@
-# baseURI: http://onto.fel.cvut.cz/ontologies/s-pipes/hello-world-example-0.1
-# imports: http://onto.fel.cvut.cz/ontologies/s-pipes-lib
-
 @prefix : <http://onto.fel.cvut.cz/ontologies/s-pipes/hello-world-example-0.1/> .
 @prefix doc: <http://onto.fel.cvut.cz/ontologies/documentation/> .
 @prefix kbss-module: <http://onto.fel.cvut.cz/ontologies/lib/module/> .
@@ -28,7 +25,6 @@
   sml:value [
       sp:varName "firstName"^^xsd:string ;
     ] ;
-  rdfs:label "Bind person name1" ;
 .
 
 :construct-greeding
@@ -46,7 +42,6 @@ WHERE {
 }"""^^xsd:string ;
     ] ;
   sml:replace "true"^^xsd:boolean ;
-  rdfs:label "Construct greeting"^^xsd:string ;
 .
 
 :express-greeding_Return

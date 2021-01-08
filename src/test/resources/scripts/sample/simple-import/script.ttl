@@ -443,6 +443,7 @@ sp:isURI  a              spin:Function ;
         spin:returnType  xsd:boolean ;
         spin:symbol      "isURI" .
 
+#try to get rid of sping construct - just keep s
 spl:Attribute  a            spin:ConstructTemplate ;
         rdfs:comment        "Defines an \"attribute\" of a class. Attribute definitions bundle common modeling patterns known from object-oriented languages like UML. Each attribute can have min and max cardinality, a value type and a default value. The attribute links a class with one RDF property. This template should be used as spin:constraints on a class to make sure that classes meet the expected cardinalities and valueType constraints.\nIf a model wants to use spl:defaultValue, then it should instantiate the spl:ConstructDefaultValues as a spin:constructor at some root class, such as rdfs:Resource." ;
         rdfs:label          "Attribute" ;

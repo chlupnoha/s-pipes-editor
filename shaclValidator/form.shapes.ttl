@@ -66,15 +66,15 @@
 #.
 
 # kazda cesta sm:next musi koncit funkci
-:connected-to-function
-  a sh:NodeShape ;
-  sh:targetClass sm:Modules ;
-  sh:property [
-      sh:path [ sh:zeroOrMorePath sm:next  ] ;
-      sh:minCount 1 ;
-      sh:class sm:Function ;
-    ] ;
-.
+#:connected-to-function
+#  a sh:NodeShape ;
+#  sh:targetClass sm:Modules ;
+#  sh:property [
+#      sh:path [ sh:zeroOrMorePath sm:next  ] ;
+#      sh:minCount 1 ;
+#      sh:class sm:Function ;
+#    ] ;
+#.
 
 
 #:must-have-function-shape

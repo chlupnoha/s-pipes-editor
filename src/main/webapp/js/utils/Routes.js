@@ -11,7 +11,8 @@ const Routes = {
     editRecord: {name: 'editRecord', path: 'records/:key'},
     views: {name: 'views', path: 'views/:key'},
     scripts: {name: 'scripts', path: 'scripts'},
-    functions: {name: 'functions', path: 'functions'}
+    functions: {name: 'functions', path: 'functions'},
+    validation: {name: 'validation', path: 'validation'}
 };
 
 module.exports = Routes;
